@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class lucky7 {
 	
@@ -6,13 +7,19 @@ public class lucky7 {
     private static final int PELIN_HINTA = 1; // Yhden pelin hinta = 1 €
     
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
         while (pelaajanRahat >= PELIN_HINTA) {
             pelaaPeli();
-
+            System.out.print("Haluatko pelata uudelleen? (kyllä/ei): ");
+            String vastaus = scanner.nextLine().toLowerCase();
+            if (!vastaus.equals("kyllä")) {
+                break;
+            }
         }
 
-        System.out.println("Rahasi ovat loppuneet. Peli päättyi.");
-        
+        System.out.println("Rahasi ovat loppuneet tai päätit lopettaa. Peli päättyi.");
+        scanner.close();
     }
 
     public static void pelaaPeli() {
