@@ -2,14 +2,19 @@ import java.util.Random;
 
 public class lucky7 {
 	
-    private static int pelaajanRahat = 5; // Alussa pelaajalla on 5 € rahaa
-    private static final int PELIN_HINTA = 1; // Pelin hinta on 1 €
+    private static int pelaajanRahat = 5; // alkuraha 5 €
+    private static final int PELIN_HINTA = 1; // Yhden pelin hinta = 1 €
     
     public static void main(String[] args) {
         while (pelaajanRahat >= PELIN_HINTA) {
             pelaaPeli();
 
-    public static void arvoNumerotJaTulosta() {
+        }
+
+        System.out.println("Rahasi ovat loppuneet. Peli päättyi.");
+    }
+
+    public static void pelaaPeli() {
         Random random = new Random();
 
         int numero1 = random.nextInt(10) + 1;
