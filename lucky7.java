@@ -1,10 +1,13 @@
 import java.util.Random;
 
 public class lucky7 {
-
+	
+    private static int pelaajanRahat = 5; // Alussa pelaajalla on 5 € rahaa
+    private static final int PELIN_HINTA = 1; // Pelin hinta on 1 €
+    
     public static void main(String[] args) {
-        arvoNumerotJaTulosta();
-    }
+        while (pelaajanRahat >= PELIN_HINTA) {
+            pelaaPeli();
 
     public static void arvoNumerotJaTulosta() {
         Random random = new Random();
