@@ -9,6 +9,8 @@ public class lucky7 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        // tarkistetaan pelaajan rahamäärä, haluaako pelata uudelleen / pystyykö
+        
         while (pelaajanRahat >= PELIN_HINTA) {
             pelaaPeli();
             System.out.print("Haluatko pelata uudelleen? (kyllä/ei): ");
@@ -21,23 +23,35 @@ public class lucky7 {
         System.out.println("Rahasi ovat loppuneet tai päätit lopettaa. Peli päättyi.");
         scanner.close();
     }
+    
+    
 
     public static void pelaaPeli() {
     	
         Random random = new Random();
+        
+        // vähennetään pelaajan rahoista pelin hinta eli pelaajan rahat x - 1 €
 
         pelaajanRahat -= PELIN_HINTA;
+        
+        // arvotaan pelaajalle kolme numeroa randomilla 
 
         int numero1 = random.nextInt(10) + 1;
         int numero2 = random.nextInt(10) + 1;
         int numero3 = random.nextInt(10) + 1;
+        
+        // printataan konsoliin arvotut numerot
 
         System.out.println("Arvotut numerot: " + numero1 + ", " + numero2 + ", " + numero3);
 
+        // laitetaan int sisälle, nimellä "NumeroSeitsemänMäärä" :ksi nolla, jos on yksi numero 7, muuttuu "NumeroSeitsemänMäärä" yhdeksi jne.
+        
         int NumeroSeitsemanMaara = 0;
         if (numero1 == 7) NumeroSeitsemanMaara++;
         if (numero2 == 7) NumeroSeitsemanMaara++;
         if (numero3 == 7) NumeroSeitsemanMaara++;
+        
+        // jos kaikki 3 numeroa on 7, voitit 20 €
         
         if (NumeroSeitsemanMaara == 3) {
             pelaajanRahat += 20;
@@ -45,20 +59,28 @@ public class lucky7 {
             
 		} 
         
+        // jos kaksi numeroa on 7, voitit 5 €
+        
         else if (NumeroSeitsemanMaara == 2) {
             pelaajanRahat += 5;
             System.out.println("Onneksi olkoon, voitit! Kaksi numeroa oli 7. Voitit 5 €.");
             
         } 
         
+        // jos yksi numero 7, voitit 3 €
+        
 		else if (NumeroSeitsemanMaara == 1) {
             pelaajanRahat += 3;
             System.out.println("Onneksi olkoon, voitit! Yksi numero oli 7. Voitit 3 €.");
         } 
         
+        // yksikään numero ei ollut 7, hävisit 1 €
+        
         else {
             System.out.println("Hävisit! Yksikään numero ei ollut 7.");
         }
+        
+        // printataan pelaajan rahamäärä
 
         System.out.println("Sinulla on nyt " + pelaajanRahat + " € rahaa.");
     }
